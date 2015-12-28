@@ -1,0 +1,34 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+ 
+	<div id="logo">
+		<img src="http://localhost:8080/7shop/imagens/7Shop.png"/>
+	</div>
+	
+	<div id="login">
+		<h:form>
+			<c:if test="#{loginBean.lojista == null and loginBean.lojista == null}">	
+				<h:inputText value="#{loginBean.login}">Login:</h:inputText>
+				<h:inputText value="#{loginBean.senha}">Senha:</h:inputText>	
+				<h:commandLink id="submitLoginLojista" value="Logar" action="#{loginBean.logarComoLojista}" class="branco" />
+			</c:if>
+			
+			<c:if test="#{loginBean.lojista != null || loginBean.lojista != null}">
+				<h:commandLink id="submitLogoff" value="Logoff" action="#{loginBean.sairLojista}" class="branco" />
+			</c:if>
+		</h:form>
+	</div>
+	
+	<div id="menu">	
+		<c:if test="#{loginBean.lojista != null || loginBean.lojista != null}">
+			<h:form>					
+				<h:commandLink id="manterProdutos" value="Manter Produtos" action="manter_produtos" class="branco" />
+			</h:form>
+		</c:if>
+	</div>
+
+</ui:composition>

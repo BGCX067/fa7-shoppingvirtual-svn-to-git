@@ -1,0 +1,87 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="//paginas/template.xhtml">
+
+    <ui:define name="espaco_1">
+		<ui:include src="/paginas/topo.xhtml"/>
+	</ui:define>
+
+	<ui:define name="meio">
+	
+		<p class="titulo_caso_de_uso">Manter Carrinho</p>
+		
+		<h:form>
+		
+			<h:outputLabel for="mensagemDeErro" value="#{manterCarrinhoBean.mensagemDeErro}" class="mensagemDeErro" align="center"/>			
+			
+			<c:choose>
+				<c:when test="#{produtoBean.itens != null}">
+					<h:dataTable value="#{produtoBean.itens}" var="c" border="0"
+							cellpadding="2" cellspacing="1" 
+							 styleClass="tabela tabelaCss" rowClasses="odd, even">
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Nome" />
+							</f:facet>
+							<h:outputText value="#{c.produto.nome}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Descricao" />
+							</f:facet>
+							<h:outputText value="#{c.produto.descricao}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Preco" />
+							</f:facet>
+							<h:outputText value="#{c.produto.preco}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Quantidade" />
+							</f:facet>
+							<h:outputText value="#{c.quantidade}" />
+						</h:column>
+						<!--  
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Subtotal" />
+							</f:facet>
+							<h:outputText value="#{c.subtotal}" />
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="" />
+							</f:facet>
+							<h:commandLink action="#{manterDepartamentoBean.excluir}">
+								<f:param name="id" value="#{c.id}" />
+								<h:outputText value="Excluir" immediate="true"/>
+							</h:commandLink>
+						</h:column>
+					-->
+					</h:dataTable>
+				</c:when>
+			</c:choose>	
+			<br/>		
+		<h:commandLink action="voltar">
+			<f:param name="cancelar" value="Cancelar" />
+			<h:outputText value="Adicionar Outro Produto" immediate="true"/>
+		</h:commandLink>	
+		</h:form>		
+
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

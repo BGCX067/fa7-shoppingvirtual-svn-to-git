@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_administrador/menu_administrador.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+	
+		<p class="titulo_caso_de_uso">Gerenciar Mensagens</p>
+	
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputLabel for="evento" value="Evento" />
+				<h:outputText id="evento" value="#{gerenciarMensagensDeEventosBean.mensagemEvento.evento.nome}" />
+				<h:message for="evento" />
+				<h:outputLabel for="codigo" value="Codigo" />
+				<h:outputText id="codigo" value="#{gerenciarMensagensDeEventosBean.mensagemEvento.id}" />
+				<h:message for="codigo" />				
+				<h:outputLabel for="mensagem" value="Mensagem" />
+				<h:outputText id="mensagem" value="#{gerenciarMensagensDeEventosBean.mensagemEvento.mensagem}" />
+				<h:message for="mensagem" />
+				<h:outputLabel for="motivoStatus" value="Motivo do status" />
+				<h:inputTextarea id="motivoStatus" value="#{gerenciarMensagensDeEventosBean.mensagemEvento.motivoStatus}" />
+				<h:message for="motivoStatus" />
+			</h:panelGrid>
+			<br/>
+		<br/>
+			<table align="center">
+				<tr>  
+					<td>
+						<h:commandButton value="Aceitar" disabled="#{gerenciarMensagensDeEventosBean.disabledAceitar}" action="#{gerenciarMensagensDeEventosBean.aceitar}" />
+					</td>
+					<td>
+						<h:commandButton value="Rejeitar" disabled="#{gerenciarMensagensDeEventosBean.disabledRejeitar}" action="#{gerenciarMensagensDeEventosBean.rejeitar}" />
+					</td>
+					<td>
+						<h:commandButton value="Gerar Mala Direta" disabled="#{gerenciarMensagensDeEventosBean.disabledRejeitar}" action="#{gerenciarMensagensDeEventosBean.gerarMala}" />
+					</td>
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" />
+					</td>
+				</tr>
+			</table>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

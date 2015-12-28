@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+   	xmlns:c="http://java.sun.com/jstl/core" 
+	template="/paginas/templates/template.xhtml">
+		
+	<ui:define name="conteudoPrincipal">
+		<div id="conteudoPrincipal">
+			<h3>Produtos</h3>
+			
+			<c:forEach items="#{departamentoBean.listaDepartamentos}"  var="departamento">
+				<a href=""><img src="#{facesContext.externalContext.requestContextPath}/imagens/banner/#{departamento.imagem}" width="50" height="30" /></a>
+				<h:commandButton value="Mais Detalhes" action="detalharProduto"
+						immediate="true" />
+				<h3><h:outputText value="#{departamento.descricao}" /></h3>
+				<h3><h:outputText value="#{departamento.preco}" /></h3>
+			</c:forEach>
+
+			<br clear="all" />
+		</div>
+	</ui:define>
+
+</ui:composition>

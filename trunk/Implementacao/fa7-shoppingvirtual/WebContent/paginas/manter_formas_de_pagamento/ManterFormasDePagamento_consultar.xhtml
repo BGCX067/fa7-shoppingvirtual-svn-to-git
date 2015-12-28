@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="//paginas/templates/templateAdmin.xhtml">
+
+	<ui:define name="espaco_1">
+		<ui:include src="/paginas/topoAdmin.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudoPrincipal">
+		
+		<table align="center">
+			<tr>
+				<td>
+					<p class="titulo_caso_de_uso">Manter Formas de Pagamento</p>
+			
+					<h:form>
+						<table align="center">
+							<tr>
+			
+							<h:panelGrid columns="3">
+			
+								<h:outputLabel for="nome" value="Nome" />
+								<h:inputText id="nome"
+									value="#{manterFormasPagamentoBean.formasDePagamento.nome}" />
+								<h:message for="nome" class="mensagemDeErro" />
+							</h:panelGrid>
+			
+							<br/>
+							<table>
+								<tr>
+			
+									<td><h:commandButton value="Pesquisar"
+										action="#{manterFormasPagamentoBean.pesquisar}" immediate="true" />
+									</td>
+									<td><h:commandButton value="Incluir"
+										action="#{manterFormasPagamentoBean.incluir}" /></td>
+			
+									<td><h:commandButton value="Cancelar" action="voltar"
+										immediate="true" /></td>
+								</tr>
+							</table>
+							
+							<br/>
+			
+							<h:outputLabel for="mensagemDeErro"
+								value="#{manterFormasPagamentoBean.mensagemDeErro}"
+								class="mensagemDeErro" align="center" />
+			
+							<c:choose>
+								<c:when test="#{manterFormasPagamentoBean.formasDePagamentos != null}">
+									<h:dataTable value="#{manterFormasPagamentoBean.formasDePagamentos}"
+										var="c" border="0">
+			
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Nome" />
+											</f:facet>
+											<h:outputText value="#{c.nome}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="" />
+											</f:facet>
+											<h:commandLink action="#{manterFormasPagamentoBean.editar}">
+												<f:param name="id" value="#{c.id}" />
+												<h:outputText value="Editar" immediate="true" />
+											</h:commandLink>
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="" />
+											</f:facet>
+											<h:commandLink action="#{manterFormasPagamentoBean.excluir}">
+												<f:param name="id" value="#{c.id}" />
+												<h:outputText value="Excluir" immediate="true" />
+											</h:commandLink>
+										</h:column>
+									</h:dataTable>
+								</c:when>
+							</c:choose>
+
+							</tr>
+						</table>
+					</h:form>			
+			
+				</td>
+			</tr>
+		</table>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

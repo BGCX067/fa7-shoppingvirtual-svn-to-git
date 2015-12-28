@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+   	xmlns:c="http://java.sun.com/jstl/core" 
+	template="/paginas/template/template.xhtml">
+		
+	<ui:define name="conteudoPrincipal">
+		<p class="titulo_caso_de_uso">
+			<h:outputText value="#{produto.loja}" /> 
+			-
+			<h:outputText value="#{produto.departamento}" />
+		</p>
+	
+		<div id="conteudoPrincipal">
+			<h3>Produtos</h3>
+			
+			<h2><h:outputText value="Nome" /></h2>
+			
+			<img src="#{facesContext.externalContext.requestContextPath}/imagens/banner/#{departamento.imagem}" width="50" height="30" />
+			
+			<h:outputText value="#{produto.descricao}" />
+			
+			<h:outputText value="#{produto.preco}" />
+			
+			<h:outputText value="#{produto.valor}" />
+			
+			<h:commandButton value="Comprar" action="#{}" immediate="true"/>
+
+			<br clear="all" />
+		</div>
+	</ui:define>
+
+</ui:composition>

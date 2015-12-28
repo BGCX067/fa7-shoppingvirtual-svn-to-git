@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+   	xmlns:c="http://java.sun.com/jstl/core" 
+	template="/paginas/templates/template.xhtml">
+		
+	<ui:define name="conteudoPrincipal">
+		<div id="conteudoPrincipal">
+			<div id="produtosPrincipais">
+				<h3>Produtos Destaque</h3>
+					<ul id="demoOne">
+						<c:forEach items="#{manterPaginaPrincipalBean.listarTodosProdutosPrincipais}"  var="produtoPrincipal">
+							<li><a href=""><img src="#{facesContext.externalContext.requestContextPath}/imagens/banner/#{produtoPrincipal.imagem}" height="263"  border="0"/></a></li>
+						</c:forEach>
+					</ul>
+				<br clear="all" />
+			</div>
+			
+			<div id="produtos">
+				<h3>Produtos</h3>
+				
+						<c:forEach items="#{manterPaginaPrincipalBean.listarProdutosDaLojaDepartamento}"  var="produto">
+							<div class="borda-arredondada" style="float:left; margin-left:10px;">
+										<h3><h:outputText value="#{produto.nome}"  /></h3>  <br />
+										<p><h:outputText value="#{produto.descricao}"  /></p>  <br />
+										
+										<p><h:outputLabel value="Estoque" /></p> 
+										<p><h:outputText value="#{produto.quantidadeEstoque}"  /></p>  <br />
+										
+										<p><h:outputLabel  value="Preço" /></p> 
+										<p>R$<h:outputText value="#{produto.preco}"  /></p> <br />
+										<h:message class="mensagemDeErro" />
+							</div>
+						</c:forEach>
+				</div>
+					
+			</div>
+		
+	</ui:define>
+
+</ui:composition>

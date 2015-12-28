@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_administrador/menu_administrador.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+	
+		<p class="titulo_caso_de_uso">Gerenciar Anunciantes</p>
+	
+		<h:form>
+			<h:panelGrid columns="3">
+				
+				
+				
+				<h:outputLabel for="nome" value="Nome" />
+				<h:outputText id="nome" value="#{gerenciarAnunciantesBean.anunciante.nome}" />
+				<h:message for="nome" />
+				<h:outputLabel for="status" value="Situação" />
+				<h:outputText id="status" value="#{gerenciarAnunciantesBean.situacao}" />
+				<h:message for="status" />
+				<h:outputLabel for="telefone" value="Telefone" />
+				<h:outputText id="telefone" value="#{gerenciarAnunciantesBean.anunciante.telefone}" />
+				<h:message for="telefone" />
+				<h:outputLabel for="sexo" value="Sexo" />
+				<h:outputText id="sexo" value="#{gerenciarAnunciantesBean.anunciante.sexo}" />
+				<h:message for="sexo" />
+				<h:outputLabel for="dataNascimento" value="Data de Nascimento" />
+				<h:outputText id="dataNascimento" value="#{gerenciarAnunciantesBean.anunciante.dataNascimento}" converter="javax.faces.DateTime"/>
+				<h:message for="dataNascimento" />
+				<h:outputLabel for="cpf" value="CPF" />
+				<h:outputText id="cpf" value="#{gerenciarAnunciantesBean.anunciante.cpf}" />
+				<h:message for="cpf" />
+				<h:outputLabel for="email" value="Email" />
+				<h:outputText id="email" value="#{gerenciarAnunciantesBean.anunciante.email}" converter="javax.faces.DateTime"/>
+				<h:message for="email" />
+
+				<h:outputLabel for="motivoStatus" value="Motivo do status" />
+				<h:inputTextarea id="motivoStatus" value="#{gerenciarAnunciantesBean.anunciante.motivoStatus}" />
+				<h:message for="motivoStatus" />
+			</h:panelGrid>
+			<br/>
+			<table align="center">
+				<tr>  
+					<td>
+						<h:commandButton value="Aceitar" disabled="#{gerenciarAnunciantesBean.disabledAceitar}" action="#{gerenciarAnunciantesBean.aceitar}" />
+					</td>
+					<td>
+						<h:commandButton value="Rejeitar" disabled="#{gerenciarAnunciantesBean.disabledRejeitar}" action="#{gerenciarAnunciantesBean.rejeitar}" />
+					</td>
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" />
+					</td>
+				</tr>
+			</table>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

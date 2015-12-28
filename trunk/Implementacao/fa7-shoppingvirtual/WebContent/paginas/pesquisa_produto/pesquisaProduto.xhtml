@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+	
+	<ui:composition template="/paginas/templates/template.xhtml">
+		 <ui:define name="espaco_1">
+		<ui:include src="/paginas/topo.xhtml"/>
+	</ui:define>
+	
+		<ui:define name="meio">
+			<p class="titulo_caso_de_uso">Resultado Pesquisa</p>
+			<h:form >
+				<div >
+				<h:dataTable value="#{produtoBean.pesquisaProdutoBeans}"
+							 var="item"  cellpadding="2" cellspacing="1" 
+							 styleClass="tabela tabelaCss" rowClasses="odd, even" 
+							 rendered="#{not empty produtoBean.pesquisaProdutoBeans}">
+					<h:column >
+						<f:facet name="header" >
+							<h:outputText value="Loja" />
+						</f:facet>
+						<h:outputText value="#{item.loja.nomeFantasia}" />
+					</h:column>
+					<h:column >
+						<f:facet name="header" >
+							<h:outputText value="Produto" />
+						</f:facet>
+						<h:outputText value="#{item.produto.nome}" />
+					</h:column>
+					<h:column >
+						<f:facet name="header" >
+							<h:outputText value="Preco" />
+						</f:facet>
+						<h:outputText value="#{item.produto.preco}" />
+					</h:column>
+					<h:column >
+						<f:facet name="header" >
+							<h:outputText value="Adicionar ao Carrinho" />
+						</f:facet>
+						<h:commandLink value="" action="#{produtoBean.adicionarProdutoCarrinho}" >
+						<h:graphicImage value="/imagens/carrinho.jpg"   />
+						</h:commandLink>
+						<h:inputText value="#{produtoBean.quantidade}"/>
+					</h:column>
+				</h:dataTable>
+				</div>
+				<h:outputText value="Produto nao encontrado" 
+							  rendered="#{empty produtoBean.pesquisaProdutoBeans}"/>
+			</h:form>
+			
+			
+		</ui:define>
+	</ui:composition>
+	</body>	
+</html>

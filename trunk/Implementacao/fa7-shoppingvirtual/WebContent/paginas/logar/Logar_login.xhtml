@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/paginas/templateLogin.xhtml">
+
+	<ui:define name="meio">
+	
+		<p class="titulo_caso_de_uso">Logar como Cliente</p>
+	
+		<h:form>
+			<table align="center">
+				<h:panelGrid columns="3" align="center">
+					<h:outputLabel for="login" value="Login" />
+					<h:inputText id="login" value="#{loginBean.login}" required="true">
+						<f:validateLength minimum="3" maximum="80" />
+					</h:inputText>
+					<h:message for="login" class="mensagemDeErro" />
+					<h:outputLabel for="senha" value="Senha" />
+					<h:inputSecret id="senha" value="#{loginBean.senha}"
+						required="true">
+						<f:validateLength minimum="3" maximum="20" />
+					</h:inputSecret>
+					<h:message for="senha" class="mensagemDeErro" />
+				</h:panelGrid>
+			</table>
+			<br />
+			<table align="center">
+				<tr>
+					<td><h:commandButton value="Entrar"
+						action="#{loginBean.logarComoCliente}" /></td>
+					<td><h:commandButton value="Cancelar" action="logoff"
+						immediate="true" /></td>
+				</tr>
+			</table>
+			<table align="center">
+				<tr>
+					<td><h:commandButton value="Cadastrar-se como Cliente"
+						action="#{manterClienteBean.incluir}" immediate="true" /></td>
+					<td><h:commandButton value="Cadastrar-se como Lojista"
+						action="#{manterLojistaBean.incluir}" immediate="true" /></td>
+					<td><h:commandButton value="Logar como Lojista"
+						action="logarComoLojista" immediate="true" /></td>
+				</tr>
+			</table>
+			<h:outputLabel for="mensagemDeErro"
+				value="#{loginBean.mensagemDeErro}" class="mensagemDeErro"
+				align="center" />
+		</h:form>
+	</ui:define>
+
+</ui:composition>

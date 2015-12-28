@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">seteshop</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/seteshop</property>
+        <property name="hibernate.connection.username">seteshop</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <mapping class="br.com.seteshop.negocio.modelo.Carrinho"/>
+        <mapping class="br.com.seteshop.negocio.modelo.Cliente"/>
+        <mapping class="br.com.seteshop.negocio.modelo.Departamento"/>
+        <mapping class="br.com.seteshop.negocio.modelo.Item"/>
+        <mapping class="br.com.seteshop.negocio.modelo.Endereco"/>
+        <mapping class="br.com.seteshop.negocio.modelo.Loja"/>
+        <mapping class="br.com.seteshop.negocio.modelo.Lojista"/>
+        <mapping class="br.com.seteshop.negocio.modelo.Produto"/>
+        <mapping class="br.com.seteshop.negocio.modelo.Secao"/>
+        <mapping class="br.com.seteshop.negocio.modelo.FormasDePagamento"/>
+
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich">
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include
+			src="/paginas/ambiente_administrador/menu_administrador.xhtml" />
+	</ui:define>
+
+	<ui:define name="espaco_4">
+
+		<p class="titulo_caso_de_uso">Manter Preco</p>
+
+		<h:form>
+			<h:panelGrid columns="3">
+				
+				<h:outputLabel for="secao" value="Secao" />
+				<h:selectOneMenu onchange="" value="#{manterPrecoBean.idSecao}">
+					<c:forEach var="secao" items="#{manterPrecoBean.secoes}">
+						<f:selectItem itemLabel="#{secao.nome}" itemValue="#{secao.id}" />
+					</c:forEach>
+				</h:selectOneMenu>
+				<h:message for="secao" />
+
+				<h:outputLabel for="preco" value="Preco" />
+				<h:inputText id="preco" value="#{manterPrecoBean.preco.valor}" required="true">
+					<f:convertNumber maxIntegerDigits="9" maxFractionDigits="2" minFractionDigits="2" locale="pt"/>
+				</h:inputText>	 
+				
+				<h:message for="preco" class="mensagemDeErro"/>
+				<h:outputLabel for="dataInicio" value="Dada de Inicio" />
+				<rich:calendar datePattern="dd/MM/yyyy"	value="#{manterPrecoBean.preco.dataInicio}" />
+				<h:message for="dataInicio" class="mensagemDeErro" />
+
+				<h:outputLabel for="dataFim" value="Data de Fim" />
+				<rich:calendar datePattern="dd/MM/yyyy"
+					value="#{manterPrecoBean.preco.dataFim}" />
+
+				<h:message for="dataFim" />
+
+			</h:panelGrid>
+			<br />
+			<table align="center">
+				<tr>
+					<td>
+						<h:commandButton value="Salvar"	action="#{manterPrecoBean.salvar}" />
+					</td>
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" immediate="true"/>
+					</td>
+				</tr>
+			</table>
+			<h:outputLabel aling="justify" for="mensagemDeErro" value="#{manterPrecoBean.mensagemDeErro}" class="mensagemDeErro" align="center"/>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

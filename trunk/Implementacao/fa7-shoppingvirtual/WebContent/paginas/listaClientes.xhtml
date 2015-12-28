@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
+	
+	<ui:define name="conteudoPrincipal">
+		<div id="conteudoPrincipal"></div>
+	</ui:define>
+    <h:form>
+	<h:dataTable var="item" border="1" cellpadding="2" cellspacing="0"
+		value="#{manterClienteBean.todosClientes}" width="450px">
+		<h:column>
+			<h:outputText value="#{item.email}" />
+		</h:column>
+		<h:column>
+		<h:commandLink value="Editar"
+						action="#{manterClienteBean.editarCliente}" />
+		</h:column>				
+	</h:dataTable>
+	</h:form>
+</ui:composition>

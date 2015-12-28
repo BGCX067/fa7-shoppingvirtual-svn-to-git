@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="/paginas/template.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_usuario/menu_usuario.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+		
+		<p class="titulo_caso_de_uso">Manter avaliacao</p>
+	
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:inputHidden id="usuario"  value="#{reavaliarEventoBean.usuario.id}"></h:inputHidden>
+				<h:inputHidden id="evento"  value="#{reavaliarEventoBean.avaliacao.evento.id}"></h:inputHidden>
+				<h:inputHidden id="id"  value="#{reavaliarEventoBean.avaliacao.id}"></h:inputHidden>
+				<h:outputLabel for="nota" value="Nota" />
+				<h:inputText id="nota" value="#{reavaliarEventoBean.avaliacao.nota}" required="true" >
+					<f:convertNumber/>
+					<f:validateLongRange minimum="0" maximum="10"/>
+				</h:inputText>
+				<h:message for="nota" />
+			</h:panelGrid>
+			<br/>
+			<table align="center">
+				<tr>
+					<td>
+						<h:commandButton value="Salvar" action="#{reavaliarEventoBean.salvar}" />
+					</td>
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" immediate="true"/>
+					</td>
+				</tr>
+			</table>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="//paginas/templates/templateAdmin.xhtml">
+
+	<ui:define name="espaco_1">
+		<ui:include src="/paginas/topoAdmin.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudoPrincipal">
+		
+		<table align="center">
+		<tr>
+		<td>
+	
+			<p class="titulo_caso_de_uso">Manter Departamento</p>
+			
+				<h:form>
+					<h:panelGrid columns="3">
+						
+						<h:outputLabel for="nome" value="Nome" />
+						<h:inputText id="nome" value="#{manterDepartamentoBean.departamento.nome}" required="true"/>
+						<h:message for="nome" class="mensagemDeErro"/>
+						<h:outputLabel for="descricao" value="Descricao" />
+						<h:inputText id="descricao" value="#{manterDepartamentoBean.departamento.descricao}" required="true"/>
+						<h:message for="descricao" class="mensagemDeErro"/>
+					</h:panelGrid>
+					<br/>
+					<table align="center">
+						<tr>
+							<td>
+								<h:commandButton value="Salvar" action="#{manterDepartamentoBean.salvar}" />
+							</td>
+							<td>
+								<h:commandButton value="Cancelar" action="voltar" immediate="true" />
+							</td>
+						</tr>
+					</table>
+					<h:outputLabel for="mensagemDeErro" value="#{manterDepartamentoBean.mensagemDeErro}" class="mensagemDeErro" align="center"/>
+				</h:form>
+			</td>
+			</tr>
+			</table>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

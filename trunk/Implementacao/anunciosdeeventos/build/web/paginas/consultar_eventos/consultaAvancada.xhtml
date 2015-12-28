@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
+	 <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+
+<ui:composition template="/paginas/template.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="espaco_4">
+		<h:form>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table width="466" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="23">&nbsp;</td>
+        <td width="443">Consulta Avançada </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td width="443">&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td width="443">Descrição ou Nome</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><label>
+          <h:inputText value="#{consultarEventosBean.pesquisa}" />
+        </label></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>Tipo de Evento</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+        <h:selectOneMenu onchange="" value="#{consultarEventosBean.idTipoEvento}">   
+					<c:forEach var="tipoEvento" items="#{manterEventosBean.tiposEventos}">
+                    	<f:selectItem itemLabel="#{tipoEvento.nome}" itemValue="#{tipoEvento.id}"/>
+                	</c:forEach >
+         </h:selectOneMenu>  
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>Seção</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><h:selectOneMenu onchange="" value="#{consultarEventosBean.idSecao}">   
+					<c:forEach var="secao" items="#{manterEventosBean.secoes}">
+                    	<f:selectItem itemLabel="#{secao.nome}" itemValue="#{secao.id}"/>
+                	</c:forEach >
+                 </h:selectOneMenu> </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>Área de Professional </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+        <h:selectOneMenu onchange="" value="#{consultarEventosBean.idAreaProfissional}">   
+					<c:forEach var="areaProfissional" items="#{manterEventosBean.areasProfissionais}">
+                    	<f:selectItem itemLabel="#{areaProfissional.nome}" itemValue="#{areaProfissional.id}"/>
+                	</c:forEach >
+                 </h:selectOneMenu>  
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><h:commandButton value="Ok" action="#{consultarEventosBean.consultaAvancada}"></h:commandButton></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+				</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

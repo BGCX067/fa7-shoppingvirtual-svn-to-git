@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich">
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include
+			src="/paginas/ambiente_administrador/menu_administrador.xhtml" />
+	</ui:define>
+
+	<ui:define name="espaco_4">
+
+		<p class="titulo_caso_de_uso">Manter Cliente</p>
+
+		<h:form>
+			<h:panelGrid columns="3" align="center">
+
+				<h:inputHidden id="id" value="#{manterClienteBean.cliente.id}" />
+
+				<h:outputLabel for="nome" value="Nome" />
+				<h:inputText id="nome" value="#{manterClienteBean.cliente.nome}" />
+				<h:message for="nome" class="mensagemDeErro" />
+
+				<h:outputLabel for="rua" value="Rua" />
+				<h:inputText id="rua" value="#{manterClienteBean.cliente.rua}" />
+				<h:message for="rua" class="mensagemDeErro" />
+
+				<h:outputLabel for="numero" value="Numero" />
+				<h:inputText id="numero" value="#{manterClienteBean.cliente.numero}" />
+				<h:message for="numero" class="mensagemDeErro" />
+
+				<h:outputLabel for="complemento" value="Complemento" />
+				<h:inputText id="complemento"
+					value="#{manterClienteBean.cliente.complemento}" />
+				<h:message for="complemento" class="mensagemDeErro" />
+
+				<h:outputLabel for="bairro" value="Bairro" />
+				<h:inputText id="bairro" value="#{manterClienteBean.cliente.bairro}" />
+				<h:message for="bairro" class="mensagemDeErro" />
+
+				<h:outputLabel for="telefone" value="Telefone" />
+				<h:inputText id="telefone"
+					value="#{manterClienteBean.cliente.telefone}" />
+				<h:message for="telefone" class="mensagemDeErro" />
+
+				<h:outputLabel for="sexo" value="Sexo" />
+				<h:selectOneMenu onchange=""
+					value="#{manterClienteBean.cliente.sexo}">
+					<f:selectItem itemLabel="::Selecione::" itemValue="" />
+					<f:selectItem itemLabel="Feminino" itemValue="F" />
+					<f:selectItem itemLabel="Masculino" itemValue="M" />
+				</h:selectOneMenu>
+				<h:message for="sexo" class="mensagemDeErro" />
+
+				<h:outputLabel for="dataNascimento" value="Data de Nascimento" />
+				<rich:calendar datePattern="dd/MM/yyyy"
+					value="#{manterClienteBean.cliente.dataNascimento}" />
+				<h:message for="dataNascimento" class="mensagemDeErro" />
+
+				<h:outputLabel for="cpf" value="CPF" />
+				<h:inputText id="cpf" value="#{manterClienteBean.cliente.cpf}" />
+				<h:message for="cpf" class="mensagemDeErro" />
+
+				<h:outputLabel for="email" value="Email" />
+				<h:inputText id="email" value="#{manterClienteBean.cliente.email}" />
+				<h:message for="email" class="mensagemDeErro" />
+
+			</h:panelGrid>
+			<br />
+			<table align="center">
+				<tr>
+					<td><h:commandButton value="Salvar"
+						action="#{manterClienteBean.salvar}" image="../../imagens/salvar.gif"/></td>
+					<td><h:commandButton value="Cancelar" action="voltar"
+						immediate="true" image="../../imagens/Cancelar.gif"/></td>
+				</tr>
+			</table>
+			<h:outputLabel for="mensagemDeErro"
+				value="#{manterAreasProfissionaisBean.mensagemDeErro}"
+				class="mensagemDeErro" align="center" />
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

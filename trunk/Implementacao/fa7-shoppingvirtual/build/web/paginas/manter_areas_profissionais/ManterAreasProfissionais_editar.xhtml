@@ -1,0 +1,48 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_administrador/menu_administrador.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+	
+	<p class="titulo_caso_de_uso">Manter Areas Profissionais</p>
+	
+		<h:form>
+			<h:panelGrid columns="3">
+				
+				<h:outputLabel for="nome" value="Nome" />
+				<h:inputText id="nome" value="#{manterAreasProfissionaisBean.areaprofissional.nome}" required="true"/>
+				<h:message for="nome" class="mensagemDeErro"/>
+				<h:outputLabel for="descricao" value="Descricao" />
+				<h:inputText id="descricao" value="#{manterAreasProfissionaisBean.areaprofissional.descricao}" required="true"/>
+				<h:message for="descricao" class="mensagemDeErro"/>
+			</h:panelGrid>
+			<br/>
+			<table align="center">
+				<tr>
+					<td>
+						<h:commandButton value="Salvar" action="#{manterAreasProfissionaisBean.salvar}" />
+					</td>
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" immediate="true" />
+					</td>
+				</tr>
+			</table>
+			<h:outputLabel for="mensagemDeErro" value="#{manterAreasProfissionaisBean.mensagemDeErro}" class="mensagemDeErro" align="center"/>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

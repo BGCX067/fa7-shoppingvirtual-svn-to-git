@@ -1,0 +1,46 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="/paginas/templateLogin.xhtml">
+
+	<ui:define name="espaco_4">
+	
+		<p class="titulo_caso_de_uso"><h:outputLabel for="titulo" value="#{loginBean.titulo}" /></p>
+	
+		<h:form>
+			<h:panelGrid columns="3" align="center">
+				<h:outputLabel for="login" value="#{loginBean.rotuloLogin}" />
+				<h:inputText id="login" value="#{loginBean.login}" required="true">
+					<f:validateLength minimum="3" maximum="80"/>
+				</h:inputText>
+				<h:message for="login" class="mensagemDeErro" />
+				<h:outputLabel for="senha" value="Senha" />
+				<h:inputSecret id="senha" value="#{loginBean.senha}" required="true">
+					<f:validateLength minimum="3" maximum="20"/>
+				</h:inputSecret>
+				<h:message for="senha" class="mensagemDeErro"/>
+			</h:panelGrid>
+			<br/>			
+			<table align="center">
+				<tr>
+					<td>
+						<h:commandButton value="Entrar" action="#{loginBean.logar}" />
+					</td>
+					<td>
+						<h:commandButton value="Cancelar" action="cancelar" immediate="true"/>
+					</td>
+				</tr>
+			</table>
+			<h:outputLabel for="mensagemDeErro" value="#{loginBean.mensagemDeErro}" class="mensagemDeErro" align="center"/>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

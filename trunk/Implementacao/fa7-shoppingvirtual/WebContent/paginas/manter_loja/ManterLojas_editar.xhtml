@@ -1,0 +1,98 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="//paginas/templates/templateAdmin.xhtml">
+
+	<ui:define name="espaco_1">
+		<ui:include src="/paginas/topoAdmin.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudoPrincipal">
+
+		<table align="center">
+			<tr>
+				<td>
+					<p class="titulo_caso_de_uso">Manter Loja</p>
+		
+					<h:form>
+						<h:panelGrid columns="3">
+							<h:outputLabel for="nomeSecao" value="Secao" />
+							<h:selectOneListbox id="nomeSecao" required="true" size="1"
+								requiredMessage="Informe a Secao da Loja"
+								value="#{manterLojaBean.secaoId}">
+								<f:selectItems value="#{manterLojaBean.listaDeSecoes}" />
+							</h:selectOneListbox>
+							<h:message for="nomeSecao" class="mensagemDeErro" />
+							<h:outputLabel for="cnpj" value="CNPJ" />
+							<h:inputText id="cnpj" value="#{manterLojaBean.loja.cpfCnpj}"
+								required="true" />
+							<h:message for="cnpj" class="mensagemDeErro" />
+							<h:outputLabel for="razaoSocial" value="Razao Social" />
+							<h:inputText id="razaoSocial"
+								value="#{manterLojaBean.loja.razaoSocial}" required="true" />
+							<h:message for="razaoSocial" class="mensagemDeErro" />
+							<h:outputLabel for="nome" value="Nome Fantasia" />
+							<h:inputText id="nome" value="#{manterLojaBean.loja.nomeFantasia}"
+								required="true" />
+							<h:message for="nome" class="mensagemDeErro" />
+												<h:outputLabel for="tipoEndereco" value="Tipo Endereco" />
+							<h:inputText id="tipoEndereco"
+								value="#{manterLojaBean.loja.endereco.tipoEndereco}"
+								required="true" />
+							<h:message for="tipoEndereco" class="mensagemDeErro" />
+							<h:outputLabel for="endereco" value="Endereco" />
+							<h:inputText id="endereco"
+								value="#{manterLojaBean.loja.endereco.endereco}" required="true" />
+							<h:message for="endereco" class="mensagemDeErro" />
+							<h:outputLabel for="numero" value="Numero" />
+							<h:inputText id="numero"
+								value="#{manterLojaBean.loja.endereco.numero}" required="true" />
+							<h:message for="numero" class="mensagemDeErro" />
+							<h:outputLabel for="complemento" value="Complemento" />
+							<h:inputText id="complemento"
+								value="#{manterLojaBean.loja.endereco.complemento}"
+								required="false" />
+							<h:message for="complemento" class="mensagemDeErro" />
+							<h:outputLabel for="bairro" value="Bairro" />
+							<h:inputText id="bairro"
+								value="#{manterLojaBean.loja.endereco.bairro}" required="true" />
+							<h:message for="bairro" class="mensagemDeErro" />
+							<h:outputLabel for="cidade" value="Cidade" />
+							<h:inputText id="cidade"
+								value="#{manterLojaBean.loja.endereco.cidade}" required="true" />
+							<h:message for="cidade" class="mensagemDeErro" />
+							<h:outputLabel for="uf" value="UF" />
+							<h:inputText id="uf" value="#{manterLojaBean.loja.endereco.uf}"
+								required="true" />
+							<h:message for="uf" class="mensagemDeErro" />
+							<h:outputLabel for="telefone" value="Telefone" />
+							<h:inputText id="telefone" value="#{manterLojaBean.loja.telefone}"
+								required="true" />
+							<h:message for="telefone" class="mensagemDeErro" />
+						</h:panelGrid>
+						<br />
+						<table align="center">
+							<tr>
+								<td><h:commandButton value="Salvar"
+									action="#{manterLojaBean.salvar}" /></td>
+								<td><h:commandButton value="Cancelar" action="voltar"
+									immediate="true" /></td>
+							</tr>
+						</table>
+						<h:outputLabel for="mensagemDeErro"
+							value="#{manterLojaBean.mensagemDeErro}" class="mensagemDeErro"
+							align="center" />
+					</h:form>
+				</td>
+			</tr>
+		</table>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

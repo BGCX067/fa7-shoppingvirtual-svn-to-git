@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+   	xmlns:c="http://java.sun.com/jstl/core" 
+	template="/paginas/templates/templateCliente.xhtml">
+
+	<ui:define name="espaco_1">
+		<ui:include src="/paginas/topo.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudoPrincipal">
+	
+		<p class="titulo_caso_de_uso">Cadastrar Cliente</p>
+		
+		<h:form>
+			<h:panelGrid columns="3" align="center">
+				<h:outputLabel for="nome" value="Nome" />
+				<h:inputText id="nome" value="#{manterClienteBean.cliente.nome}"
+					required="true" />
+				<h:message for="nome" class="mensagemDeErro" id="mensagemDeErro" />
+				<h:outputLabel for="sobrenome" value="Sobrenome" />
+				<h:inputText id="sobrenome" value="#{manterClienteBean.cliente.sobrenome}"
+					required="true" />
+				<h:message for="sobrenome" class="mensagemDeErro" />
+				<h:outputLabel for="email" value="Email" />
+				<h:inputText id="email" value="#{manterClienteBean.cliente.email}"
+					required="true" />
+				<h:message for="email" class="mensagemDeErro" />
+				<h:outputLabel for="senha" value="Senha" />
+				<h:inputSecret id="senha" value="#{manterClienteBean.cliente.senha}"
+					required="true" />
+				<h:message for="senha" class="mensagemDeErro" />
+				<h:outputLabel for="confirmarSenha" value="Confirmar Senha" />
+				<h:inputSecret id="confirmarSenha" value="#{manterClienteBean.confirmarSenha}" required="true" />
+				<h:message for="confirmarSenha" class="mensagemDeErro" />
+			</h:panelGrid>
+			<br />
+			<div align="center"><c:if
+				test="#{manterClienteBean.mensagemDeErro != ''}">
+				<h:outputLabel for="mensagemDeErro"
+					value="#{manterClienteBean.mensagemDeErro}" class="mensagemDeErro"
+					align="center" />
+			</c:if></div>
+			<table align="center">
+				<tr>
+					<td><h:commandButton value="Salvar"
+						action="#{manterClienteBean.salvar_novo}" /></td>
+					<td><h:commandButton value="Cancelar" action="logoff"
+						immediate="true" /></td>
+				</tr>
+			</table>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

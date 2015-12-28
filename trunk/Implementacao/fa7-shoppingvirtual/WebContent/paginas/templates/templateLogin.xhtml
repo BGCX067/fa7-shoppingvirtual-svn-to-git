@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+      
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>Sistema de Eventos - Anuncia7</title>
+		<link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/estilos.css" />
+	</head>
+	
+	<body>
+	
+		<div id="centralizado">
+		
+			<div id="topo">
+				<ui:include src="/paginas/topoLogin.xhtml"/>
+			</div>
+					
+			<div id="meio">
+			
+				<div id="secoes">
+				
+					<h3>Secoes</h3>
+					
+					<c:forEach items="#{secaoBean.secoes}" var="secao">
+					
+						<h4 class="mgl15 mgt15"><h:outputText value="#{secao.nome}" /></h4>
+					
+					</c:forEach>
+					
+				</div>
+				
+				<ui:insert name="meio"></ui:insert>
+				
+			</div>
+			
+		</div>
+		
+	</body>
+
+</html>

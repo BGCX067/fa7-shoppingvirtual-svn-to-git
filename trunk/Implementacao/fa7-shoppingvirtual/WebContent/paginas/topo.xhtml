@@ -1,0 +1,51 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<div id="logo">
+		<img src="http://localhost:8080/7shop/imagens/7Shop.png"/>
+	</div>
+	
+	<div id="login">
+		<h:form>
+			<h:inputText value="#{loginBean.login}">Login:</h:inputText>
+			<h:inputText value="#{loginBean.senha}">Senha:</h:inputText>
+			<c:if test="#{loginBean.cliente == null and loginBean.cliente == null}">
+				<h:commandLink id="submitLogin" value="Logar" action="login" class="branco" />
+			</c:if>
+			
+			<c:if test="#{loginBean.cliente != null || loginBean.cliente != null}">
+				<h:commandLink id="submitLogoff" value="Logoff" action="#{loginBean.sair}" />
+			</c:if>
+		</h:form>
+		<a class="branco" href="/7shop/paginas/manter_cliente/ManterCliente_incluir.faces"  style="margin-right:20px;">Cadastrar Cliente</a>
+		<a class="branco" href="/7shop/paginas/manter_lojista/ManterLojista_incluir.faces">Cadastrar Lojista</a>
+		
+	</div>
+	<br/>
+	
+	<!-- Possivel colocação mais tarde no desenvolvimento. Dependendo do concenso entre os desenvolvedores
+ 	<div id="menu" class="mgl20">
+		<h:form>
+			<h:commandLink id="btHome" value="Home" action="home" /> | 
+			
+			<h:commandLink id="btEmpresa" value="Empresa" action="empresa" /> | 
+			
+			<h:commandLink id="btContato" value="Contato" action="contato" /> | 
+		</h:form>
+	</div>
+	
+	-->
+	
+	<div id="pesquisa">
+		<h:form>
+			<h:inputText class="inputPesquisa" value="#{produtoBean.produto.nome}"></h:inputText>
+			<h:commandButton class="btPesquisa" value="Pesquisar"
+				action="#{produtoBean.pesquisarProdutoporNome}" />
+		</h:form> 
+	</div>
+	
+</ui:composition>

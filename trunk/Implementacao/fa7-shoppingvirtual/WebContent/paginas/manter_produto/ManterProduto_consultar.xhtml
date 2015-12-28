@@ -1,0 +1,90 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="//paginas/templates/templateLojista.xhtml">
+
+    <!--<ui:define name="espaco_1">
+		<ui:include src="/paginas/topo.xhtml"/>
+	</ui:define>
+	-->
+	
+	<ui:define name="conteudoPrincipal">
+	
+		<p class="titulo_caso_de_uso">Manter Produtos</p>
+		<h:outputText value="#{produtoBean.mensagemDeInformacao}" 
+			rendered="#{produtoBean.mensagemDeInformacao != null}" 
+			styleClass="color : red;"/>
+		<br/>
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputLabel for="nome" value="Nome" />
+				<h:inputText id="nome" value="#{produtoBean.produto.nome}" />
+				<h:message for="nome" class="mensagemDeErro" />
+			</h:panelGrid>
+			
+			<br />
+			<table>
+				<tr>
+					<td>
+						<h:commandButton value="Pesquisar" action="#{produtoBean.pesquisar}" immediate="true"/>
+					</td>
+					
+					<td>
+						<h:commandButton value="Incluir" action="#{produtoBean.incluir}" />
+					</td>
+					
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" immediate="true" />
+					</td>
+					
+					<!-- <td>
+						<h:commandButton value="Salvar" action="#{manterItemBean.salvar}" />
+					</td> -->
+				</tr>
+			</table>
+			
+			<br/>	
+			<h:panelGroup rendered="#{produtoBean.chamadaPesquisar}">
+			<c:choose>
+				<c:when test="#{produtoBean.produtos != null}">
+					<h:dataTable value="#{produtoBean.produtos}" var="c" border="0">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Nome" rendered="#{not empty produtoBean.produtos}" />
+							</f:facet>
+							<h:outputText value="#{c.nome}" />
+						</h:column>
+						
+						<h:column>							
+							<h:commandLink action="#{produtoBean.editar}">
+								<f:param name="id" value="#{c.id}" />
+								<h:outputText value="  Editar" immediate="true"/>
+							</h:commandLink>
+						</h:column>
+						
+						<h:column>							
+							<h:commandLink action="#{produtoBean.excluir}">
+								<f:param name="id" value="#{c.id}" />
+								<h:outputText value="  Excluir"  />
+							</h:commandLink>
+							<!-- <h:commandLink action="#{manterItemBean.salvar}">
+								<f:param name="id" value="#{c.id}" />
+								<h:outputText value="  Incluir no carrinho" immediate="true"/>
+							</h:commandLink>  -->
+						</h:column>
+					</h:dataTable>
+				</c:when>
+			</c:choose>			
+			</h:panelGroup>
+		</h:form>		
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

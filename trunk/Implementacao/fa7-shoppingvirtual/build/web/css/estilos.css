@@ -1,0 +1,94 @@
+body { 
+	font-family: Verdana, Arial, Times, "Times New Roman", Verdana, Georgia, serif;;
+	font-size: 84%;
+	font-size-adjust: none;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	line-height: normal;
+	white-space: nowrap;
+	margin: 0px;
+}
+
+#cabecalho {
+	background-color: #CADCEA;
+	height: 108px;
+}
+
+#direita {
+    background-color: #FFFFFF;
+    font-size: 105%;
+	padding: 15px;
+	float: right;
+	width: 180px;
+}
+
+#esquerda {
+    background-color: #FFFFFF;
+	padding: 15px;
+	float: left;
+	width: 230px;
+	/*border-right-color: #CADCEA;
+    border-right-style: solid;
+    border-right-width: thin;	*/
+}
+
+#centro {
+    background-color: #FFFFFF;
+	padding: 15px;
+	margin-right: 230px;
+	margin-left: 260px;
+	/*border-left-color: #CADCEA;
+    border-left-style: solid;
+    border-left-width: thin;*/
+}
+
+#rodape {
+	background-color: #CADCEA;
+	text-align: center;
+	padding: 15px;
+	font-size: 90%;
+	clear: both;
+}
+
+#esquerda_login {
+    background-color: #FFFFFF;
+	padding: 15px;
+	float: left;
+	width: 230px;
+	/*border-right-color: #CADCEA;
+    border-right-style: solid;
+    border-right-width: thin;	*/
+}
+
+#centro_login {
+    background-color: #FFFFFF;
+	padding: 15px;
+	margin-right: 230px;
+	margin-left: 260px;
+	/*border-left-color: #CADCEA;
+    border-left-style: solid;
+    border-left-width: thin;*/
+}
+
+#centralizado {
+    align: center;
+}
+
+.mensagemDeErro {
+	color: red;
+	font-size: 70%;
+}
+
+a:href {
+	color: #333333;
+}
+
+a:link, a:visited {
+	text-decoration:none;
+}
+
+.labelDetalhePesquisa {font-family: Arial, Helvetica, sans-serif;
+color: blue;
+}

@@ -1,0 +1,84 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_administrador/menu_administrador.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+	
+		<p class="titulo_caso_de_uso">Manter Areas Profissionais</p>
+	
+		<h:form>
+			<h:panelGrid columns="3">
+				
+				<h:outputLabel for="nome" value="Nome" />
+				<h:inputText id="nome" value="#{manterAreasProfissionaisBean.areaprofissional.nome}" />
+				<h:message for="nome" class="mensagemDeErro" />
+			</h:panelGrid>
+			<br />
+			<table>
+				<tr>
+				
+					<td>
+						<h:commandButton value="Pesquisar" action="#{manterAreasProfissionaisBean.pesquisar}" immediate="true"/>
+					</td>
+					<td>
+						<h:commandButton value="Incluir" action="#{manterAreasProfissionaisBean.incluir}" />
+						
+					</td>
+					
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" immediate="true" />
+					</td>
+				</tr>
+			</table>
+			<br/>
+			
+			<h:outputLabel for="mensagemDeErro" value="#{manterAreasProfissionaisBean.mensagemDeErro}" class="mensagemDeErro" align="center"/>
+										
+			<c:choose>
+				<c:when test="#{manterAreasProfissionaisBean.areasprofissionais != null}">
+					<h:dataTable value="#{manterAreasProfissionaisBean.areasprofissionais}" var="c" border="0">
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Nome" />
+							</f:facet>
+							<h:outputText value="#{c.nome}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="" />
+							</f:facet>
+							<h:commandLink action="#{manterAreasProfissionaisBean.editar}">
+								<f:param name="id" value="#{c.id}" />
+								<h:outputText value="Editar" immediate="true"/>
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="" />
+							</f:facet>
+							<h:commandLink action="#{manterAreasProfissionaisBean.excluir}">
+								<f:param name="id" value="#{c.id}" />
+								<h:outputText value="Excluir" immediate="true"/>
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
+				</c:when>
+			</c:choose>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	  			xmlns:h="http://java.sun.com/jsf/html"
+      			xmlns:c="http://java.sun.com/jstl/core">
+
+	<h:form>
+		<table>
+			<tr> 
+				<td>
+					<h:commandLink id="submitEditarUsuario" value="Editar Usuario"
+						action="#{manterUsuarioBean.editar}"/>
+				</td>										
+			</tr>
+			<tr> 
+				<td>
+					<input jsfc="h:commandLink" type="submit" id="submitReavaliarEvento" value="Reavaliar Eventos"
+						action="#{reavaliarEventoBean.listarAvaliacoes}"/>
+				</td>										
+			</tr>
+			<tr>
+				<td>
+					<input jsfc="h:commandLink" type="submit" id="submitLogoff" value="Sair"
+						action="#{loginBean.sair}"/>
+				</td>										
+			</tr>
+		</table>
+	</h:form>
+		
+</ui:composition>

@@ -1,0 +1,84 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_administrador/menu_administrador.xhtml"/>
+	</ui:define> 
+
+	<ui:define name="espaco_4">
+	
+		<p class="titulo_caso_de_uso">Manter Tipos de Eventos</p>
+	
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputLabel for="nome" value="Nome" />
+				<h:inputText id="nome" value="#{manterTiposdeEventosBean.tipodeevento.nome}">
+					<f:validateLength maximum="100"/>
+				</h:inputText>
+				<h:message for="nome" class="mensagemDeErro" />
+			</h:panelGrid>
+			<br />
+			<table>
+				<tr>
+					<td>
+						<h:commandButton value="Pesquisar" action="#{manterTiposdeEventosBean.pesquisar}" image="../../imagens/Pesquisar.gif" />
+					</td>
+					<td>
+						<h:commandButton value="Incluir" action="#{manterTiposdeEventosBean.incluir}" image="../../imagens/novo.gif" immediate="true" />
+					</td>
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" immediate="true" image="../../imagens/Voltar.gif" />
+					</td>
+				</tr>
+			</table>
+			<br/>
+			<c:choose>
+				<c:when test="#{manterTiposdeEventosBean.tiposdeeventos != null}">
+					<h:dataTable value="#{manterTiposdeEventosBean.tiposdeeventos}" var="c" border="0">
+						<!-- <h:column>
+							<f:facet name="header">
+								<h:outputText value="Codigo" />
+							</f:facet>
+							<h:outputText value="#{c.id}" />
+						</h:column> -->
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Nome" />
+							</f:facet>
+							<h:outputText value="#{c.nome}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="" />
+							</f:facet>
+							<h:commandLink action="#{manterTiposdeEventosBean.editar}">
+								<f:param name="id" value="#{c.id}" />
+								<h:outputText value="Editar" />
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="" />
+							</f:facet>
+							<h:commandLink action="#{manterTiposdeEventosBean.excluir}">
+								<f:param name="id" value="#{c.id}" />
+								<h:outputText value="Excluir" />
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
+				</c:when>
+			</c:choose>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

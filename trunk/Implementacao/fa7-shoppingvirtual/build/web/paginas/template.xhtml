@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Sistema de Eventos - Anuncia7</title>
+<link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/estilos.css">
+</link>
+</head>
+<body>
+<div id="centralizado">
+	<div id="cabecalho">
+	    <ui:include src="/paginas/topo.xhtml"/>
+	</div>
+	<div id="esquerda">
+		<ui:insert name="espaco_2"></ui:insert>
+	</div>
+	<div id="direita">
+		<ui:insert name="espaco_3"></ui:insert>
+	</div>
+	<div id="centro">
+		<table align="center">
+			<tr>
+				<td>
+				    <ui:insert name="espaco_4"></ui:insert>
+	    		</td>
+	    	</tr>
+	    </table>
+	</div>
+	<div id="rodape">
+	    <ui:include src="/paginas/copyright.xhtml"/>
+	</div>
+</div>
+</body>
+</html>

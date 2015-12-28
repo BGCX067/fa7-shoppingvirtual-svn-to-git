@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	template="/paginas/templates/template.xhtml">
+
+	<ui:define name="conteudoPrincipal">
+		<div id="conteudoPrincipal"></div>
+	</ui:define>
+
+	<h:form>
+		<h:panelGrid columns="3" align="center">
+			<h:outputLabel for="nome" value="Nome" />
+			<h:inputText id="nome" value="#{manterClienteBean.cliente.nome}"
+				required="true" />
+			<h:message for="nome" class="mensagemDeErro" />
+			<h:outputLabel for="sobrenome" value="Sobrenome" />
+			<h:inputText id="sobrenome"
+				value="#{manterClienteBean.cliente.sobrenome}" required="true" />
+			<h:message for="sobrenome" class="mensagemDeErro" />
+			<h:outputLabel for="email" value="Email" />
+			<h:inputText id="email" value="#{manterClienteBean.cliente.email}"
+				required="true" />
+			<h:message for="email" class="mensagemDeErro" />
+		</h:panelGrid>
+		<h:commandButton value="Salvar"
+						action="#{manterClienteBean.atualizarCliente}" />
+	</h:form>
+</ui:composition>

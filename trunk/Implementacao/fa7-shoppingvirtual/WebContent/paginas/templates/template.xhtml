@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Sistema de Eventos - Anuncia7</title>
+<link rel="stylesheet" type="text/css"
+	href="#{facesContext.externalContext.requestContextPath}/css/estilos.css" />
+
+<link rel="stylesheet" type="text/css"
+	href="../css/droplinetabs.css" />
+<script type="text/javascript" src="../_js/jquery-1.4.2.js" />
+<script type="text/javascript" src="../_js/efeitos.js" />
+<script type="text/javascript" src="../_js/menu/jquery.dimensions.js" />
+<script type="text/javascript" src="../_js/menu/jquery.jdMenu.js" />
+<script type="text/javascript" src="../_js/menu/jquery.jdMenu.packed.js" />
+<script type="text/javascript" src="../_js/menu/jquery.bgiframe.js" />
+<script type="text/javascript" src="../_js/jqgalscroll.js" />
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#demoOne").jqGalScroll();
+	});
+</script>
+	
+<style>
+	@import url("../css/jqGalScroll.css");
+</style>
+	
+</head>
+
+<body>
+
+<div id="corpo">
+
+<div id="topo"><ui:include src="/paginas/topo.xhtml" /></div>
+
+	<h:form>
+		<ul class="menu">
+			<li class="top">
+				<a href="#" class="top_link"><span>Ver todas asSecoes</span></a>
+				<ul class="sub">
+					<c:forEach items="#{manterPaginaPrincipalBean.listarTodasSecoes}" var="secao">
+						<li>
+							<h:commandLink id="#{secao.nome}" value="#{secao.nome}"  class="btSetaIcones" action="#{manterPaginaPrincipalBean.recuperarLojasDaSecao}">
+								<f:param name="id" value="#{secao.id}"/>
+							</h:commandLink>
+						</li>
+					</c:forEach>			
+				</ul>
+			</li>
+		
+			
+				<c:forEach items="#{manterPaginaPrincipalBean.listarTodasSecoes}" var="secao">
+					<li class="top">
+						<h:commandLink value="#{secao.nome}"  class="btSetaIcones" action="#{manterPaginaPrincipalBean.recuperarLojasDaSecao}">
+							<f:param name="id" value="#{secao.id}" />
+						</h:commandLink>
+					</li>
+				</c:forEach>
+
+		</ul>
+	</h:form>
+
+
+	
+	<h:form>
+		<ul class="icone menu menuLoja">
+			<c:forEach items="#{manterPaginaPrincipalBean.listarLojasDaSecao}" var="loja">
+				<li class="top">
+					<span>
+						<h:commandLink id="#{loja.razaoSocial}" value="#{loja.razaoSocial}" action="#{manterPaginaPrincipalBean.recuperarProdutosDaLoja}">
+								<f:param name="id" value="#{loja.id}"/>
+						</h:commandLink>
+					</span>
+				</li>
+			</c:forEach>
+		</ul>
+	</h:form>
+
+
+<div id="departamentos" class="borda-arredondada">
+	<h3>Departamentos</h3>
+	<h:form>
+		<c:forEach items="#{manterPaginaPrincipalBean.listarTodosDepartamentos}" 	var="departamento">
+			<h4 class="mgl15 mgt15">
+				<h:commandLink id="#{departamento.nome}" value="#{departamento.nome}" action="#{manterPaginaPrincipalBean.recuperarProdutosDoDepartamento}">
+								<f:param name="id" value="#{departamento.id}"/>
+				</h:commandLink>
+			</h4>
+		</c:forEach>
+	</h:form>
+</div>
+
+<ui:insert name="conteudoPrincipal"></ui:insert>
+<div id="footer"><ui:include src="/paginas/footer.xhtml" /></div>
+
+</div>
+
+</body>
+
+</html>

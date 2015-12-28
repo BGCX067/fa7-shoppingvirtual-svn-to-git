@@ -1,0 +1,63 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	  			xmlns:h="http://java.sun.com/jsf/html"
+      			xmlns:c="http://java.sun.com/jstl/core">
+
+	<h:form>
+		<table>
+			<tr>
+				<td>
+					<h:commandLink id="submitManterSecoes" value="Manter Secoes"
+						action="manter_secoes"/>
+				</td>										
+			</tr>
+			<tr>
+				<td>
+					<h:commandLink id="submitManterPreco" value="Manter Preco" action="manter_precos"/>
+				</td>										
+			</tr>
+			<tr>
+				<td>
+					<h:commandLink id="submitManterAreasProfissionais" value="Manter Areas Profissionais"
+						action="manter_areas_profissionais"/>
+				</td>										
+			</tr>
+			<tr>
+				<td>
+					<h:commandLink id="submitManterTiposEventos" value="Manter Tipos de Eventos"
+						action="manter_tipos_eventos"/>
+				</td>										
+			</tr>
+			<tr>
+				<td>
+					<h:commandLink id="submitGerenciarAnunciantes" value="Gerenciar Anunciantes"
+						action="gerenciar_anunciantes"/>
+				</td>										
+			</tr>
+			<tr>
+				<td>
+					<h:commandLink id="submitGerenciarEventos" value="Gerenciar Eventos"
+						action="gerenciar_eventos"/>
+				</td>										
+			</tr>
+			<tr>
+				<td>
+					<h:commandLink id="submitGerenciarMensagensDeEventos" value="Gerenciar Mensagens de Eventos"
+						action="gerenciar_mensagens_eventos"/>
+				</td>										
+			</tr>
+			<tr>
+				<td>
+					<h:commandLink id="submitLogoff" value="Sair" action="#{loginBean.sair}"/>
+				</td>										
+			</tr>
+			<tr>
+				<td>
+					<h:commandLink id="manterCliente" value="Manter Cliente" action="manter_cliente"/>
+				</td>										
+			</tr>
+			
+			
+		</table>
+	</h:form>
+		
+</ui:composition>

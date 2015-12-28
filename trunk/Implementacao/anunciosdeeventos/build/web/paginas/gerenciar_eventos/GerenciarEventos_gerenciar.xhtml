@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_administrador/menu_administrador.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+	
+		<p class="titulo_caso_de_uso">Gerenciar Eventos</p>
+	
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputLabel for="codigo" value="Codigo" />
+				<h:outputText id="codigo" value="#{gerenciarEventosBean.evento.id}" />
+				<h:message for="codigo" />
+				<h:outputLabel for="nome" value="Nome" />
+				<h:outputText id="nome" value="#{gerenciarEventosBean.evento.nome}" />
+				<h:message for="nome" />
+				<h:outputLabel for="descricao" value="Descricao" />
+				<h:outputText id="descricao" value="#{gerenciarEventosBean.evento.descricao}" />
+				<h:message for="descricao" />
+
+				<h:outputLabel for="status" value="Situação" />
+				<h:outputText id="status" value="#{gerenciarEventosBean.situacao}" />
+				<h:message for="status" />
+
+				<h:outputLabel for="local" value="Local" />
+				<h:outputText id="local" value="#{gerenciarEventosBean.evento.local}" />
+				<h:message for="local" />
+				<h:outputLabel for="endereco" value="Endereco" />
+				<h:outputText id="endereco" value="#{gerenciarEventosBean.evento.endereco}" />
+				<h:message for="endereco" />
+				<h:outputLabel for="dataInicio" value="Data de Inicio" />
+				<h:outputText id="dataInicio" value="#{gerenciarEventosBean.evento.dataInicio}" converter="javax.faces.DateTime"/>
+				<h:message for="dataInicio" />
+				<h:outputLabel for="dataFim" value="Data de Fim" />
+				<h:outputText id="dataFim" value="#{gerenciarEventosBean.evento.dataFim}" converter="javax.faces.DateTime"/>
+				<h:message for="dataFim" />
+				<h:outputLabel for="horaInicio" value="Hora de Inicio" />
+				<h:outputText id="horaInicio" value="#{gerenciarEventosBean.evento.horaInicio}" />
+				<h:message for="horaInicio" />
+				<h:outputLabel for="horaFim" value="Hora de Fim" />
+				<h:outputText id="horaFim" value="#{gerenciarEventosBean.evento.horaFim}" />
+				<h:message for="horaFim" />
+				<h:outputLabel for="dataVisualizacaoInicio" value="Data Inicio de Visualizacao" />
+				<h:outputText id="dataVisualizacaoInicio" value="#{gerenciarEventosBean.evento.dataVisualizacaoInicio}" converter="javax.faces.DateTime"/>
+				<h:message for="dataVisualizacaoInicio" />
+				<h:outputLabel for="dataVisualizacaoFim" value="Data Fim de Visualizacao" />
+				<h:outputText id="dataVisualizacaoFim" value="#{gerenciarEventosBean.evento.dataVisualizacaoFim}" converter="javax.faces.DateTime"/>
+				<h:message for="dataVisualizacaoFim" />
+
+				<h:outputLabel for="motivoStatus" value="Motivo do status" />
+				<h:inputTextarea id="motivoStatus" value="#{gerenciarEventosBean.evento.motivoStatus}" />
+				<h:message for="motivoStatus" />
+			</h:panelGrid>
+			<br/>
+			<table align="center">
+				<tr>  
+					<td>
+						<h:commandButton value="Aceitar" disabled="#{gerenciarEventosBean.disabledAceitar}" action="#{gerenciarEventosBean.aceitar}" />
+					</td>
+					<td>
+						<h:commandButton value="Rejeitar" disabled="#{gerenciarEventosBean.disabledRejeitar}" action="#{gerenciarEventosBean.rejeitar}" />
+					</td>
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" />
+					</td>
+				</tr>
+			</table>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

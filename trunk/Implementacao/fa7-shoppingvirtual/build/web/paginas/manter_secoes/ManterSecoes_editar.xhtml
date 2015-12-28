@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+      
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_administrador/menu_administrador.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+	
+		<p class="titulo_caso_de_uso">Manter Secoes</p>		
+		<h:form>				
+			<br />
+			<h:outputLabel for="mensagemDeErro" value="#{manterSecoesBean.mensagemDeErro}" class="mensagemDeErro" />
+			<h:panelGrid columns="3" align="center">
+			
+				
+				<h:outputLabel for="nome" value="Nome" />
+				<h:inputText id="nome" value="#{manterSecoesBean.secao.nome}" required="true">
+				<f:validateLength minimum="3" maximum="30"/>
+				</h:inputText>							
+				<h:message for="nome" class="mensagemDeErro" />
+				
+				<h:outputLabel for="descricao" value="Descricao" />
+				<h:inputText id="descricao" value="#{manterSecoesBean.secao.descricao}" required="true">
+				<f:validateLength minimum="3" maximum="150"/>
+				</h:inputText>				
+				<h:message for="descricao" class="mensagemDeErro" />
+				
+			</h:panelGrid>
+			<br />
+			<table align="center">
+				<tr>
+					<td>
+						<h:commandButton value="Salvar" action="#{manterSecoesBean.salvar}" />
+					</td>
+					<td>						
+						<h:commandButton value="Cancelar" action="voltar" immediate="true"/>
+					</td>
+				</tr>
+			</table>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

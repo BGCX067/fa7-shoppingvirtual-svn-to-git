@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="//paginas/templates/template.xhtml">
+
+	<ui:define name="espaco_1">
+		<ui:include src="/paginas/topo.xhtml" />
+	</ui:define>
+
+	<ui:define name="meio">
+	
+		<p class="titulo_caso_de_uso">Editar Lojista</p>
+		
+		<h:form>
+			<h:panelGrid columns="3" align="center">
+				<h:outputLabel for="nome" value="Nome" />
+				<h:inputText id="nome" value="#{manterLojistaBean.lojista.nome}"
+					required="true" />
+				<h:message for="nome" class="mensagemDeErro" />
+				<h:outputLabel for="sobrenome" value="Sobrenome" />
+				<h:inputText id="sobrenome" value="#{manterLojistaBean.lojista.sobrenome}"
+					required="true" />
+				<h:message for="sobrenome" class="mensagemDeErro" />
+				<h:outputLabel for="email" value="Email" />
+				<h:inputText id="email" value="#{manterLojistaBean.lojista.email}"
+					required="true" />
+				<h:message for="email" class="mensagemDeErro" />
+				<h:outputLabel for="senha" value="Senha" />
+				<h:inputSecret id="senha" value="#{manterLojistaBean.lojista.senha}"
+					required="true" />
+				<h:message for="senha" class="mensagemDeErro" />
+				<h:outputLabel for="confirmarSenha" value="Confirmar Senha" />
+				<h:inputSecret id="confirmarSenha" value="#{manterLojistaBean.confirmarSenha}" required="true" />
+				<h:message for="confirmarSenha" class="mensagemDeErro" />
+			</h:panelGrid>
+			<br />
+			<div align="center"><c:if
+				test="#{manterLojistaBean.mensagemDeErro != ''}">
+				<h:outputLabel for="mensagemDeErro"
+					value="#{manterLojistaBean.mensagemDeErro}" class="mensagemDeErro"
+					align="center" />
+			</c:if></div>
+			<table align="center">
+				<tr>
+					<td><h:commandButton value="Salvar"
+						action="#{manterLojistaBean.salvar_novo}" /></td>
+					<td><h:commandButton value="Cancelar" action="voltar_index"
+						immediate="true" /></td>
+				</tr>
+			</table>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

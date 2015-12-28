@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_administrador/menu_administrador.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+	
+		<p class="titulo_caso_de_uso">Manter Anunciantes</p>
+	
+		<h:form>
+			<h:panelGrid columns="3">
+				
+				
+				
+				<h:outputLabel for="nome" value="Nome" />
+				<h:inputText id="nome" value="#{manterAnuncianteBean.anunciante.nome}" />
+				<h:message for="nome" />
+				<h:outputLabel for="rua" value="Rua" />
+				<h:inputText id="rua" value="#{manterAnuncianteBean.anunciante.rua}" />
+				<h:message for="rua" />
+				<h:outputLabel for="numero" value="Numero" />
+				<h:inputText id="numero" value="#{manterAnuncianteBean.anunciante.numero}" />
+				<h:message for="numero" />
+				<h:outputLabel for="complemento" value="Complemento" />
+				<h:inputText id="complemento" value="#{manterAnuncianteBean.anunciante.complemento}" />
+				<h:message for="complemento" />
+				<h:outputLabel for="bairro" value="Bairro" />
+				<h:inputText id="bairro" value="#{manterAnuncianteBean.anunciante.bairro}" />
+				<h:message for="bairro" />
+				<h:outputLabel for="telefone" value="Telefone" />
+				<h:inputText id="telefone" value="#{manterAnuncianteBean.anunciante.telefone}" />
+				<h:message for="telefone" />
+				<h:outputLabel for="sexo" value="Sexo" />
+				<h:inputText id="sexo" value="#{manterAnuncianteBean.anunciante.sexo}" />
+				<h:message for="sexo" />
+				<h:outputLabel for="cpf" value="Cpf" />
+				<h:inputText id="cpf" value="#{manterAnuncianteBean.anunciante.cpf}" />
+				<h:message for="cpf" />
+				
+				<h:outputLabel for="datanascimento" value="Data Nascimento" />
+				<h:inputText id="datanascimento" value="#{manterAnuncianteBean.anunciante.dataNascimento}"> 
+				<f:convertDateTime pattern="dd/MM/yyyy"/></h:inputText>
+				<h:message for="datanascimento" />
+				
+				<h:outputLabel for="email" value="Email" />
+				<h:inputText id="email" value="#{manterAnuncianteBean.anunciante.email}" />
+				<h:message for="email" />
+				<h:outputLabel for="senha" value="Senha" />
+				<h:inputSecret id="senha" value="#{manterAnuncianteBean.anunciante.senha}" />
+				<h:message for="senha" />
+			</h:panelGrid>
+			<br/>
+			<table align="center">
+				<tr>
+					<td>
+						<h:commandButton value="Salvar" action="#{manterAnuncianteBean.salvar}" />
+					</td>
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" />
+					</td>
+				</tr>
+			</table>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

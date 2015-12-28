@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich">
+<body>
+
+
+
+<f:view>
+	<ui:composition template="/paginas/templateMenu.xhtml">
+
+		<ui:define name="espaco_2">
+			<ui:include src="/paginas/ambiente_anunciante/menu_anunciante.xhtml" />
+		</ui:define>
+
+		<ui:define name="espaco_4">
+
+			<p class="titulo_caso_de_uso">Manter Eventos</p>
+
+			<h:form>
+				<h:panelGrid columns="3">
+					<h:outputLabel for="nome" value="Nome" />
+					<h:inputText id="nome" value="#{manterEventosBean.evento.nome}"
+						required="true">
+						<f:validateLength minimum="4" maximum="30" />
+					</h:inputText>
+					<h:message for="nome" class="mensagemDeErro" />
+
+					<h:outputLabel for="tipoEvento" value="Tipo de Evento" />
+					<h:selectOneMenu onchange=""
+						value="#{manterEventosBean.idTipoEvento}">
+						<c:forEach var="tipoEvento"
+							items="#{manterEventosBean.tiposEventos}">
+							<f:selectItem itemLabel="#{tipoEvento.nome}"
+								itemValue="#{tipoEvento.id}">
+							</f:selectItem>
+						</c:forEach>
+					</h:selectOneMenu>
+					<h:message for="tipoEvento" />
+
+					<h:outputLabel for="secao" value="Secao" />
+					<h:selectOneMenu onchange="" value="#{manterEventosBean.idSecao}">
+						<c:forEach var="secao" items="#{manterEventosBean.secoes}">
+							<f:selectItem itemLabel="#{secao.nome}" itemValue="#{secao.id}" />
+						</c:forEach>
+					</h:selectOneMenu>
+					<h:message for="secao" />
+
+					<h:outputLabel for="areaProfissional" value="Area_Profissional" />
+					<h:selectOneMenu onchange=""
+						value="#{manterEventosBean.idAreaProfissional}">
+						<c:forEach var="areaProfissional"
+							items="#{manterEventosBean.areasProfissionais}">
+							<f:selectItem itemLabel="#{areaProfissional.nome}"
+								itemValue="#{areaProfissional.id}" />
+						</c:forEach>
+					</h:selectOneMenu>
+					<h:message for="areaProfissional" />
+
+					<h:outputLabel for="descricao" value="Descricao" />
+
+					<h:inputTextarea id="descricao"
+						value="#{manterEventosBean.evento.descricao}" required="true">
+						<f:validateLength minimum="4" maximum="30" />
+					</h:inputTextarea>
+					<h:message for="descricao" class="mensagemDeErro" />
+
+					<h:outputLabel for="local" value="Local" />
+					<h:inputText id="local" value="#{manterEventosBean.evento.local}"
+						required="true">
+						<f:validateLength minimum="4" maximum="30" />
+					</h:inputText>
+					<h:message for="local" class="mensagemDeErro" />
+					<h:outputLabel for="endereco" value="Endereco" />
+					<h:inputText id="endereco"
+						value="#{manterEventosBean.evento.endereco}" required="true">
+					</h:inputText>
+					<h:message for="endereco" class="mensagemDeErro" />
+					
+					<h:outputLabel for="dataInicio" value="Data de Inicio" />
+					<rich:calendar datePattern="dd/MM/yyyy"
+						value="#{manterEventosBean.evento.dataInicio}" />
+					<h:message for="dataInicio" class="mensagemDeErro" />
+					
+					<h:outputLabel for="dataFim" value="Data de Fim" />
+					<rich:calendar datePattern="dd/MM/yyyy"
+						value="#{manterEventosBean.evento.dataFim}" />
+					<h:message for="dataFim" class="mensagemDeErro" />
+					<h:outputLabel for="horaInicio" value="Hora de Inicio" />
+					<rich:inputNumberSlider value="#{manterEventosBean.evento.horaInicio}" minValue="0" maxValue="23" />
+					<h:message for="horaInicio" class="mensagemDeErro" />
+					<h:outputLabel for="horaFim" value="Hora de Fim" />
+					<rich:inputNumberSlider value="#{manterEventosBean.evento.horaFim}" minValue="0" maxValue="23" />
+					<h:message for="horaFim" class="mensagemDeErro" />
+					<h:outputLabel for="dataVisualizacaoInicio"
+						value="Data Inicio de Visualizacao" />
+					<rich:calendar datePattern="dd/MM/yyyy"
+						value="#{manterEventosBean.evento.dataVisualizacaoInicio}" />
+					<h:message for="dataVisualizacaoInicio" class="mensagemDeErro" />
+					<h:outputLabel for="dataVisualizacaoFim"
+						value="Data Fim de Visualizacao" />
+					<rich:calendar datePattern="dd/MM/yyyy"
+						value="#{manterEventosBean.evento.dataVisualizacaoFim}" />
+					<h:message for="dataVisualizacaoFim" class="mensagemDeErro" />
+				</h:panelGrid>
+				<br />
+				<table align="center">
+					<tr>
+						<td><h:commandButton value="Salvar"
+							action="#{manterEventosBean.salvar}" /></td>
+						<td><h:commandButton value="Cancelar" action="voltar" immediate="true" /></td>
+					</tr>
+				</table>
+			</h:form>
+
+		</ui:define>
+
+	</ui:composition>
+</f:view>
+</body>
+</html>

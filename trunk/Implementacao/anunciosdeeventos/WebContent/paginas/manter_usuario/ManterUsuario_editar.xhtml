@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="/paginas/template.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_usuario/menu_usuario.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+	
+		<p class="titulo_caso_de_uso">Editar Usuario</p>
+	
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputLabel for="nome" value="Nome" />
+				<h:inputText id="nome" value="#{manterUsuarioBean.usuario.nome}" required="true" />
+				<h:message for="nome" />
+				<h:outputLabel for="email" value="Email" />
+				<h:inputText id="email" value="#{manterUsuarioBean.usuario.email}" required="true" />
+				<h:message for="email" />
+				<h:outputLabel for="senha" value="Senha" />
+				<h:inputSecret id="senha" value="#{manterUsuarioBean.usuario.senha}" required="true" />
+				<h:message for="senha" />
+				<h:outputLabel for="confirmarSenha" value="Confirmar Senha" />
+				<h:inputSecret id="confirmarSenha" value="#{manterUsuarioBean.confirmarSenha}" required="true" />
+				<h:message for="confirmarSenha" />
+			</h:panelGrid>
+			<br/>
+			<div align="center"><c:if
+				test="#{manterUsuarioBean.mensagemDeErro != ''}">
+				<h:outputLabel for="mensagemDeErro"
+					value="#{manterUsuarioBean.mensagemDeErro}" class="mensagemDeErro"
+					align="center" />
+			</c:if></div>
+			
+			<h:commandButton value="Salvar" action="#{manterUsuarioBean.salvar}" />
+			<h:commandButton value="Cancelar" action="voltar_ambiente_usuario" immediate="true" />
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

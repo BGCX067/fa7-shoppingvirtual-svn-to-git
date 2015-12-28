@@ -1,0 +1,40 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+ 
+	<div id="logo">
+		<img src="http://localhost:8080/7shop/imagens/7Shop.png"/>
+	</div>
+	
+	<div id="login" style="float: right; margin-right:20px;">
+		<h:form>
+			<c:if test="#{loginBean.admin == null}">	
+				<h:inputText value="#{loginBean.login}">Login:</h:inputText>
+				<h:inputText value="#{loginBean.senha}">Senha:</h:inputText>	
+				<h:commandLink id="submitLoginAdmin" value="Logar" action="#{loginBean.logarComoAdmin}" class="branco" />
+			</c:if>
+			
+			<c:if test="#{loginBean.admin != null}">
+				<h:commandLink  id="submitLogoff" value="Logoff" action="#{loginBean.sairAdmin}" class="branco" style="float: right;" />
+				<br/>
+			</c:if>
+		</h:form>
+	</div>
+	
+	<div class="menuAdmin">	
+		<c:if test="#{loginBean.admin != null}">
+			<h:form>
+				<div id="links" style="float: right; width:720px; margin-top: 116px;">					
+				<h:commandLink id="manterSecoes" value="Manter Secoes" action="manter_secoes" class="branco" style="margin-right:40px;"/>
+				<h:commandLink id="manterDepartamentos" value="Manter Departamentos" action="manter_departamentos" class="branco" style="margin-right:40px;"/>
+				<h:commandLink id="manterLojas" value="Manter Lojas" action="manter_loja" class="branco" style="margin-right:40px;"/>
+				<h:commandLink id="manterFormasPagamentos" value="Manter Formas de Pagamento" action="manter_formaspagamentos" class="branco"/>
+				</div>
+			</h:form>
+		</c:if>
+	</div>
+
+</ui:composition>

@@ -1,0 +1,41 @@
+<rich:panel>
+					<h:form>
+					<rich:dataTable width="100%" value="#{manterClienteBean.clientes}"
+						var="c" rowKeyVar="row" id="clientes">
+						<a4j:keepAlive beanName="manterClienteBean" />
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Nome" />
+							</f:facet>
+							<h:outputText value="#{c.nome}" />
+						</rich:column>
+						<!-- 
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Editar" />
+							</f:facet>
+							<a4j:commandButton id="idEditar" value="Editar"
+								action="#{manterClienteBean.editar}"
+								image="../../imagens/editar.gif">
+								<f:setPropertyActionListener target="#{manterClienteBean.id}"
+										value="#{c.id}" /> 
+								<f:param name="id" value="#{c.id}" />
+							</a4j:commandButton>
+						</rich:column>
+						
+						 -->
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Excluir" />
+							</f:facet>
+							<a4j:commandButton id="idExcluir" value="Excluir"
+								action="#{manterClienteBean.excluir}"
+								image="../../imagens/excluir.gif">
+								<!-- <f:setPropertyActionListener target="#{manterClienteBean.id}"
+										value="#{c.id}" /> -->
+								<f:param name="id" value="#{c.id}" />
+							</a4j:commandButton>
+						</rich:column>
+					</rich:dataTable>
+					</h:form>
+				</rich:panel>

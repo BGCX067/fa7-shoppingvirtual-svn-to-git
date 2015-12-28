@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_administrador/menu_administrador.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+		
+		<p class="titulo_caso_de_uso">Gerenciar Mensagens de Eventos</p>
+	
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputLabel for="evento" value="Evento" />
+				  <h:selectOneMenu value="#{gerenciarMensagensDeEventosBean.idEvento}" required="true">   
+				  <c:forEach var="evento" items="#{gerenciarMensagensDeEventosBean.eventos}">
+                     <f:selectItem itemLabel="${evento.nome}" itemValue="${evento.id}"/>
+                 </c:forEach >
+                 </h:selectOneMenu>
+                 <h:message for="evento" />
+                 	<h:outputLabel for="status" value="Situação" />
+				<h:selectOneMenu onchange="" value="#{gerenciarMensagensDeEventosBean.status}">   
+                	<f:selectItem itemLabel="[Todas]" itemValue="t"/>
+                	<f:selectItem itemLabel="Aceitas" itemValue="a"/>
+                	<f:selectItem itemLabel="Rejeitadas" itemValue="r"/>
+                 </h:selectOneMenu>                
+				<h:message for="status" />
+			</h:panelGrid>
+			<br/>
+				<table>
+				<tr>
+					<td>
+						<h:commandButton value="Pesquisar" action="#{gerenciarMensagensDeEventosBean.pesquisar}" />
+					</td>
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" />
+					</td>
+				</tr>
+			</table>
+			<br/>
+			<c:if test="#{gerenciarMensagensDeEventosBean.mensagensEvento != null}">
+			<h:dataTable value="#{gerenciarMensagensDeEventosBean.mensagensEvento}" var="c" border="0">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Codigo" />
+					</f:facet>
+					<h:outputText value="#{c.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Mensagem" />
+					</f:facet>
+					<h:outputText value="#{c.mensagem}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="" />
+					</f:facet>
+					<h:commandLink action="#{gerenciarMensagensDeEventosBean.gerenciar}">
+						<f:param name="id" value="#{c.id}" />
+						<h:outputText value="Gerenciar" />
+					</h:commandLink>
+				</h:column>
+				<h:column>
+							<f:facet name="header">
+								<h:outputText value="" />
+							</f:facet>
+							<h:commandLink action="#{gerenciarMensagensDeEventosBean.editar}">
+								<f:param name="id" value="#{c.id}" />
+								<h:outputText value="Editar" />
+							</h:commandLink>
+						</h:column>
+			</h:dataTable>
+			</c:if>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

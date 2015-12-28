@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_anunciante/menu_anunciante.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+		
+		<p class="titulo_caso_de_uso">Acompanhar Pagamentos</p>
+	
+		<h:form>
+			<c:choose>
+				<c:when test="#{acompanharPagamentoBean.eventos != null}">
+					<h:dataTable value="#{acompanharPagamentoBean.eventos}" var="c" border="0">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Codigo" />
+							</f:facet>
+							<h:outputText value="#{c.id}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Nome" />
+							</f:facet>
+							<h:outputText value="#{c.nome}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Status do Pagamento" />
+							</f:facet>
+							<h:outputText value="#{c.pagamentoStatus}" />
+						</h:column>
+					</h:dataTable>
+				</c:when>
+			</c:choose>
+			<br />
+			<table>
+				<tr>
+					<td>
+						<h:commandButton value="Voltar" action="voltar" />
+					</td>
+				</tr>
+			</table>
+			<br/>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

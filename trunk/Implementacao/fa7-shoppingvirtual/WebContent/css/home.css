@@ -1,0 +1,182 @@
+#corpo {
+	width: 900px;
+	margin: 0 auto;
+	text-align: left;
+	align: center;
+}
+
+#topo {
+	height: 155px;
+	background-color: #2D7C06;
+	/*border:2px solid red;*/
+}
+
+#logo {
+	width: 150px;
+	float: left;
+	padding-left: 15px;
+	padding-right: 15px;
+	height: 108px;
+}
+
+#bannerTopo {
+	width: 600px;
+	margin-left: 20px;
+	float: left;
+	background-color: red;
+}
+
+#login {
+	height: auto;
+	float: right;
+	margin-left: 245px;
+	color: white;
+	margin-right: 20px;
+}
+
+#menu {
+    background: none repeat scroll 0 0 #2D7C06;
+    clear: both;
+    color: white;
+    float: left;
+    height: 20px;
+    margin-bottom: 0;
+    margin-left: 20px;
+    margin-top: 26px;
+    width: 879px;
+}
+/*
+#menuAdmin {
+	float: bottom;
+	width: 896px;
+	margin-top: 2px;
+	padding: 2px;
+	clear: both;
+	color: white;
+}
+
+#menu ul {
+	padding:0px;
+	margin:0px;
+	float: left;
+	width: 100%;
+	list-style:none;
+	font:80% Tahoma;
+	color: white;
+}
+
+#menu ul li {
+	display: inline;
+	color: white;
+}
+
+#menu ul li a {
+	background-color:#EDEDED;
+	/*color: #333;
+	color: white;
+	text-decoration: none;
+	border-bottom:3px solid #EDEDED;
+	padding: 2px 10px;
+	float:left;
+}
+
+#menu ul li a:hover {
+	background-color:#D6D6D6;
+	/*color: #6D6D6D;
+	color: white;
+	border-bottom:3px solid #EA0000;
+}
+*/
+.menuLoja {
+	/*margin-top: 10px;*/
+	background-color: #71C846;
+}
+/*
+.menuSecao {
+	margin: 0px;
+}
+*/
+.menuAdmin {
+	/*color: #FFF;*/
+}
+
+#pesquisa {
+	float: left;
+	margin-left: 300px;
+	margin-bottom: 10px;
+	/*border:2px solid black;*/
+	clear: both;
+}
+
+.inputPesquisa {
+	width: 450px;
+}
+
+.btPesquisa {
+	margin-left: 5px;
+	width: 105px;
+}
+
+#conteudoPrincipal {
+	margin-top: 5px;
+	margin-left: 10px;
+	min-height: 350px;
+	float: left;
+	width:555px;
+}
+
+#departamentos {
+	width: 200px;
+	min-height: 552px;
+	float: left;
+	clear: both;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#departamentos h3{
+	/*background-color: gray;*/
+	color: black;
+}
+
+#secoes {
+	width: 200px;
+	min-height: 552px;
+	padding: 15px;*/ /*float: left;*/
+}
+
+#produtosPrincipais {
+	float: left;
+	width: 555px;
+	min-height: 400px;
+	/*border: 1px solid red;*/
+}
+
+#produtos {
+	/*width: 450px;
+	min-height: 552px;*/
+	/*border: 1px solid red;*/
+	float:left;
+}
+
+.caixaProduto {
+	margin-left: 20px;
+	float: left;
+	padding: 10px;
+	width: 150px;
+}
+
+#lojasEmDestaque {
+	float: left;
+	width: 238px;
+	min-height: 552px;
+	/*border: 1px solid yellow;*/
+}
+
+#rodape {
+	background-color: #2D7C06;
+	text-align: center;
+	padding: 15px;
+	font-size: 90%;
+	clear: both;
+}

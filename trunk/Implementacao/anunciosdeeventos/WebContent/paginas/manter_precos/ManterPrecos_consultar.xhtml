@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+      
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_administrador/menu_administrador.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+		
+		<p class="titulo_caso_de_uso">Manter Preco</p>
+	
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputLabel for="secao" value="Secao" />
+				<h:selectOneMenu onchange="" value="#{manterPrecoBean.idSecao}" required="true">   
+					<c:forEach var="secao" items="#{manterPrecoBean.secoes}">
+                    	<f:selectItem itemLabel="${secao.nome}" itemValue="${secao.id}" required="true"/>
+                 	</c:forEach >
+                 </h:selectOneMenu>
+     	  	<h:message for="secao" class="mensagemDeErro" />
+		
+			</h:panelGrid>
+			<br />
+			
+						<c:choose>
+				<c:when test="#{manterPrecoBean.precos != null}">
+					<h:dataTable value="#{manterPrecoBean.precos}" var="c" border="0">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Valor" />
+							</f:facet>
+							<h:outputText value="#{c.valor}" >
+								<f:convertNumber maxIntegerDigits="9" maxFractionDigits="2" minFractionDigits="2" locale="pt"/>
+							</h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Data de Inicio" />
+							</f:facet>
+							<h:outputText value="#{c.dataInicio}" converter="javax.faces.DateTime"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Data de Fim"  />
+							</f:facet>
+							<h:outputText value="#{c.dataFim}" converter="javax.faces.DateTime" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="" />
+							</f:facet>
+							<h:commandLink action="#{manterPrecoBean.editar}">
+								<f:param name="id" value="#{c.id}" />
+								<h:outputText value="Editar" />
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="" />
+							</f:facet>
+							<h:commandLink action="#{manterPrecoBean.excluir}">
+								<f:param name="id" value="#{c.id}" />
+								<h:outputText value="Excluir" />
+							</h:commandLink>
+						</h:column>
+				</h:dataTable>
+				</c:when>
+			</c:choose>
+			
+			<br/>
+			<table>
+				<tr>
+					<td>
+						<h:commandButton value="Pesquisar" action="#{manterPrecoBean.pesquisar}" required="true"/>
+					</td>
+					<td>
+						<h:commandButton value="Incluir" action="#{manterPrecoBean.incluir}" immediate="true"/>
+					</td>
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" immediate="true" />
+					</td>
+				</tr>
+			</table>
+			
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

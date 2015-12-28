@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="/paginas/templateMenu.xhtml">
+
+	<ui:define name="espaco_2">
+		<ui:include src="/paginas/ambiente_anunciante/menu_anunciante.xhtml"/>
+	</ui:define>
+
+	<ui:define name="espaco_4">
+	
+		<p class="titulo_caso_de_uso">Cadastrar Mensagem de Eventos</p>
+	
+		<h:form>
+			<h:panelGrid columns="3">
+				<rich:comboBox suggestionValues="#{manterMensagemEventosBean.eventos}"
+		        directInputSuggestions="true" defaultLabel="Enter some value" value="#{manterMensagemEventosBean.idEvento}">
+		        	<f:selectItem itemLabel="#{manterMensagemEventosBean.idEvento}" itemValue="#{manterMensagemEventosBean.idEvento}"/>
+		        </rich:comboBox>
+				<h:message for="evento" />	
+				<h:outputLabel for="mensagem" value="Mensagem" />
+				<h:inputText id="mensagem" value="#{manterMensagemEventosBean.mensagemEvento.mensagem}" />
+				<h:message for="mensagem" />
+			</h:panelGrid>
+			<br/>
+			<table align="center">
+				<tr>
+					<td>
+						<h:commandButton value="Salvar" action="#{manterMensagemEventosBean.salvar}" image="../../imagens/salvar.gif" />
+					</td>
+					<td>
+						<h:commandButton value="Cancelar" action="voltar" image="../../imagens/Voltar.gif" />
+					</td>
+				</tr>
+			</table>
+			
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

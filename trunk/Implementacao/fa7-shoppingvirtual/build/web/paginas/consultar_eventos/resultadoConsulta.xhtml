@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:a4j="http://richfaces.org/a4j"
+
+      xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core">
+<body>
+
+<ui:composition template="/paginas/template.xhtml">
+
+	<ui:define name="espaco_2">
+	
+	<c:choose>
+			<c:when test="#{not empty manterUsuarioBean.usuario.nome}">
+				<ui:include src="/paginas/ambiente_usuario/menu_usuario.xhtml" />
+			</c:when>
+			<c:when test="#{empty manterUsuarioBean.usuario.nome}">
+				<ui:include src="/paginas/menu.xhtml" />
+			</c:when>
+	</c:choose>
+		
+	</ui:define>
+
+	<ui:define name="espaco_4">
+		<h:form>
+		<rich:dataTable 
+
+                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+
+                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+
+                    cellpadding="0" cellspacing="0" 
+
+                    width="700" border="0" var="record" value="#{consultarEventosBean.eventos}">
+                    
+                    <f:facet name="header">
+                        <rich:columnGroup>
+                            <rich:column colspan="8">
+                                <h:outputText value="Eventos" />
+                            </rich:column>
+                            <rich:column breakBefore="true">
+                                <h:outputText value="Nome" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="Descricão" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="Data de Inicio" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="Data Final" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="editar" />
+                            </rich:column>
+                        </rich:columnGroup>
+                    </f:facet>
+                  <rich:column> 
+                 
+	                    <h:outputText value="#{record.nome}" />
+				</rich:column>
+                  <rich:column> 
+	                    <h:outputText value="#{record.descricao}" />
+				</rich:column>
+                  <rich:column> 
+	                    <h:outputText value="#{record.dataInicio}" converter="javax.faces.DateTime"/>
+				</rich:column>
+                  <rich:column> 
+	                    <h:outputText value="#{record.dataFim}" converter="javax.faces.DateTime"/>
+				</rich:column>
+                  <rich:column> 
+						<h:commandLink 	action="#{consultarEventosBean.detalhar}">
+		                    <h:outputText value="detalhar" />
+							<f:param name="id" value="#{record.id}" />
+		        		</h:commandLink>
+				</rich:column>
+                    
+                </rich:dataTable>
+						
+              	<p><h:outputLabel id="mensagemDeErro" value="#{consultarEventosBean.mensagem}" class="labelDetalhePesquisa"/></p>
+                </h:form>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

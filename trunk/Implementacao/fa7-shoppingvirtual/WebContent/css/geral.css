@@ -1,0 +1,61 @@
+/* Estilos Gerais */
+.mgl20 {
+	margin-left: 20px;
+}
+
+.mgl15 {
+	margin-left: 15px;
+}
+
+.mgt15 {
+	margin-top: 15px;
+}
+
+h3 {
+	color: #4A96F1;
+	font-size: 14px;
+	font-weight: 700;
+	height: 26px;
+	line-height: 25px;
+	overflow: hidden;
+	text-align: left;
+	text-transform: none;
+	width: 190px;
+	margin-top: 15px;
+	margin-left: 15px;
+}
+
+.branco {
+	color: white;
+}
+
+h4 {
+	color: #003333;
+	font-size: 11px;
+	font-weight: 700;
+	text-align: left;
+}
+
+/* Fim Estilos Gerais */
+body {
+	font-family: Verdana, Arial, Times, "Times New Roman", Verdana, Georgia,
+		serif;;
+	font-size: 84%;
+	font-size-adjust: none;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	line-height: normal;
+	white-space: nowrap;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.borda-arredondada {
+	-moz-border-radius: 10px; /*-- para Firefox e Flock --*/
+	-webkit-border-radius: 10px; /* para Chrome e Safari --*/
+	border-radius: 10px;
+	border: 1px solid #000000; /*--- Edite cor e espessura da borda ---*/
+}
